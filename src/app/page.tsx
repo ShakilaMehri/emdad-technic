@@ -1,23 +1,38 @@
-import Button from "@/components/ui/Button";
+import Container from "@/components/ui/Container";
+import ServiceCard from "@/components/cards/ServiceCard";
 
 export default function Home() {
   return (
-    <main className="container section">
-      <h1>امداد خودرو تکنیک بندرعباس</h1>
+    <main className="section">
+      <Container>
 
-      <div className="flex gap-4 mt-6">
-        <Button>
-          تماس فوری
-        </Button>
+        <h1 className="text-center mb-8">
+          خدمات امداد خودرو تکنیک
+        </h1>
 
-        <Button variant="secondary">
-          مشاهده خدمات
-        </Button>
+        <div className="grid gap-6">
 
-        <Button variant="ghost">
-          واتساپ
-        </Button>
-      </div>
+          <ServiceCard
+            icon="🚛"
+            title="خودروبر"
+            description="حمل خودرو در تمام مناطق بندرعباس به صورت ۲۴ ساعته"
+          />
+
+          <ServiceCard
+            icon="🔧"
+            title="مکانیک سیار"
+            description="رفع مشکلات فنی خودرو در محل شما"
+          />
+
+          <ServiceCard
+            icon="⚡"
+            title="برق خودرو"
+            description="عیب‌یابی و تعمیر سیستم برق خودرو"
+          />
+
+        </div>
+
+      </Container>
     </main>
   );
 }
