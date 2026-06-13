@@ -1,7 +1,14 @@
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1>خوش آمدید</h1>
+    <main className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      <div className="container mx-auto px-4 py-20">
+        <h1 className="text-5xl font-bold text-white mb-6">
+          خوش آمدید به امداد تکنیک
+        </h1>
+        <p className="text-xl text-slate-300 font-medium">
+          خدمات ۲۴ ساعته خودروبری و امداد جاده‌ای
+        </p>
+      </div>
     </main>
   );
 }
