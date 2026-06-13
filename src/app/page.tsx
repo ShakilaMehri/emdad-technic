@@ -1,37 +1,31 @@
 import Container from "@/components/ui/Container";
-import ServiceCard from "@/components/cards/ServiceCard";
+import StatisticCard from "@/components/cards/StatisticCard";
 
 export default function Home() {
   return (
     <main className="section">
       <Container>
-
-        <h1 className="text-center mb-8">
-          خدمات امداد خودرو تکنیک
-        </h1>
+        <h2 className="mb-8 text-center">
+          امداد خودرو تکنیک در یک نگاه
+        </h2>
 
         <div className="grid gap-6">
-
-          <ServiceCard
-            icon="🚛"
-            title="خودروبر"
-            description="حمل خودرو در تمام مناطق بندرعباس به صورت ۲۴ ساعته"
+          <StatisticCard
+            value="۲۴/۷"
+            title="آماده خدمت"
           />
 
-          <ServiceCard
-            icon="🔧"
-            title="مکانیک سیار"
-            description="رفع مشکلات فنی خودرو در محل شما"
+          <StatisticCard
+            value="تمام بندرعباس"
+            title="پوشش مناطق"
+            description="خدمات در تمام مناطق شهر"
           />
 
-          <ServiceCard
-            icon="⚡"
-            title="برق خودرو"
-            description="عیب‌یابی و تعمیر سیستم برق خودرو"
+          <StatisticCard
+            value="بدون تعطیلی"
+            title="همه روزهای هفته"
           />
-
         </div>
-
       </Container>
     </main>
   );

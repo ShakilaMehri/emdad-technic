@@ -1,34 +1,30 @@
 "use client";
 
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import clsx from "clsx";
 
-type ServiceCardProps = {
+type TrustCardProps = {
   icon: ReactNode;
   title: string;
   description: string;
   className?: string;
 };
 
-export default function ServiceCard({
+export default function TrustCard({
   icon,
   title,
   description,
   className,
-}: ServiceCardProps) {
-  const [isHovered, setIsHovered] = useState(false);
-
+}: TrustCardProps) {
   return (
     <article
       className={clsx(
-        "rounded-[20px] border p-6 transition-all duration-300 hover:-translate-y-2 cursor-pointer",
+        "rounded-[20px] border p-6 transition-all duration-300 hover:-translate-y-1",
         className
       )}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
       style={{
         backgroundColor: "var(--color-surface)",
-        borderColor: isHovered ? "var(--color-accent)" : "var(--color-border)",
+        borderColor: "var(--color-border)",
       }}
     >
       <div
@@ -41,7 +37,7 @@ export default function ServiceCard({
       </div>
 
       <h3
-        className="mb-3"
+        className="mb-3 text-lg font-semibold"
         style={{
           color: "var(--color-text-primary)",
         }}
@@ -49,7 +45,11 @@ export default function ServiceCard({
         {title}
       </h3>
 
-      <p>
+      <p
+        style={{
+          color: "var(--color-text-secondary)",
+        }}
+      >
         {description}
       </p>
     </article>
