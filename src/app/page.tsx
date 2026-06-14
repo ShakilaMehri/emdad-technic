@@ -1,28 +1,27 @@
-import Container from "@/components/ui/Container";
-import ArticleCard from "@/components/cards/ArticleCard";
+"use client";
+
+import { useState } from "react";
+
+import Header from "@/components/layout/Header";
+import MobileDrawer from "@/components/layout/MobileDrawer";
 
 export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
-    <main className="section">
-      <Container>
-        <h2 className="mb-8 text-center">
-          آخرین مقالات
-        </h2>
+    <>
+      <Header
+        onOpenMenu={() => setIsMenuOpen(true)}
+      />
 
-        <div className="grid gap-6">
-          <ArticleCard
-            icon="🚗"
-            title="اگر ماشین وسط جاده خاموش شد چه کار کنیم؟"
-            readTime="۵ دقیقه مطالعه"
-          />
+      <MobileDrawer
+        isOpen={isMenuOpen}
+        onClose={() => setIsMenuOpen(false)}
+      />
 
-          <ArticleCard
-            icon="🔋"
-            title="نشانه‌های خرابی باتری خودرو"
-            readTime="۳ دقیقه مطالعه"
-          />
-        </div>
-      </Container>
-    </main>
+      <main className="section">
+        صفحه اصلی
+      </main>
+    </>
   );
 }
