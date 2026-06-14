@@ -1,29 +1,25 @@
 import Container from "@/components/ui/Container";
-import StatisticCard from "@/components/cards/StatisticCard";
+import ArticleCard from "@/components/cards/ArticleCard";
 
 export default function Home() {
   return (
     <main className="section">
       <Container>
         <h2 className="mb-8 text-center">
-          امداد خودرو تکنیک در یک نگاه
+          آخرین مقالات
         </h2>
 
         <div className="grid gap-6">
-          <StatisticCard
-            value="۲۴/۷"
-            title="آماده خدمت"
+          <ArticleCard
+            icon="🚗"
+            title="اگر ماشین وسط جاده خاموش شد چه کار کنیم؟"
+            readTime="۵ دقیقه مطالعه"
           />
 
-          <StatisticCard
-            value="تمام بندرعباس"
-            title="پوشش مناطق"
-            description="خدمات در تمام مناطق شهر"
-          />
-
-          <StatisticCard
-            value="بدون تعطیلی"
-            title="همه روزهای هفته"
+          <ArticleCard
+            icon="🔋"
+            title="نشانه‌های خرابی باتری خودرو"
+            readTime="۳ دقیقه مطالعه"
           />
         </div>
       </Container>
