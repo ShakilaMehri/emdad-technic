@@ -4,6 +4,8 @@ import { useState } from "react";
 
 import Header from "@/components/layout/Header";
 import MobileDrawer from "@/components/layout/MobileDrawer";
+import Hero from "@/components/sections/Hero";
+
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,8 +21,8 @@ export default function Home() {
         onClose={() => setIsMenuOpen(false)}
       />
 
-      <main className="section">
-        صفحه اصلی
+      <main>
+        <Hero />
       </main>
     </>
   );
