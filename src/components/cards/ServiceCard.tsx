@@ -21,9 +21,11 @@ export default function ServiceCard({
   return (
     <article
       className={clsx(
-        "rounded-[20px] border p-6 transition-all duration-300 hover:-translate-y-2 cursor-pointer",
-        className
-      )}
+  "rounded-[20px] border p-5 h-full",
+  "transition-all duration-200",
+  "hover:-translate-y-1",
+  className
+)}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{
@@ -32,7 +34,7 @@ export default function ServiceCard({
       }}
     >
       <div
-        className="mb-4 text-3xl"
+        className="mb-3 text-2xl"
         style={{
           color: "var(--color-accent)",
         }}
@@ -41,7 +43,7 @@ export default function ServiceCard({
       </div>
 
       <h3
-        className="mb-3"
+        className="mb-2 text-lg font-bold"
         style={{
           color: "var(--color-text-primary)",
         }}
@@ -49,7 +51,12 @@ export default function ServiceCard({
         {title}
       </h3>
 
-      <p>
+      <p
+        className="text-sm leading-6"
+        style={{
+          color: "var(--color-text-secondary)",
+        }}
+      >
         {description}
       </p>
     </article>

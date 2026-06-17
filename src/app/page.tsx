@@ -5,6 +5,7 @@ import { useState } from "react";
 import Header from "@/components/layout/Header";
 import MobileDrawer from "@/components/layout/MobileDrawer";
 import Hero from "@/components/sections/Hero";
+import Services from "@/components/sections/Services";
 
 
 export default function Home() {
@@ -23,6 +24,7 @@ export default function Home() {
 
       <main>
         <Hero />
+        <Services/>
       </main>
     </>
   );
