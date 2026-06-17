@@ -58,14 +58,12 @@ export default function Hero() {
           </Button>
         </div>
 
-        {/* WhatsApp */}
-        <Button variant="secondary" fullWidth>
-          <span className="flex w-full items-center justify-center gap-2">
-            <span>💬</span>
-
-            <span>ارتباط از طریق واتساپ</span>
-          </span>
-        </Button>
+<Button variant="secondary" fullWidth>
+  <div className="flex w-full items-center justify-center gap-2">
+    💬
+    ارتباط از طریق واتساپ
+  </div>
+</Button>
 
         {/* Hero Image */}
         <div className="relative mt-8 aspect-[3/2] overflow-hidden rounded-3xl">
