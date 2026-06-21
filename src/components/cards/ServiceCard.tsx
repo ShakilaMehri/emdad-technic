@@ -1,62 +1,33 @@
-"use client";
-
-import { ReactNode, useState } from "react";
-import clsx from "clsx";
+import { ReactNode } from "react";
 
 type ServiceCardProps = {
   icon: ReactNode;
   title: string;
   description: string;
-  className?: string;
 };
 
-export default function ServiceCard({
-  icon,
-  title,
-  description,
-  className,
-}: ServiceCardProps) {
-  const [isHovered, setIsHovered] = useState(false);
-
+export default function ServiceCard({ icon, title, description }: ServiceCardProps) {
   return (
     <article
-      className={clsx(
-  "rounded-[20px] border p-5 h-full",
-  "transition-all duration-200",
-  "hover:-translate-y-1",
-  className
-)}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className="group rounded-[20px] border p-5 h-full transition-all duration-200 hover:-translate-y-1"
       style={{
         backgroundColor: "var(--color-surface)",
-        borderColor: isHovered ? "var(--color-accent)" : "var(--color-border)",
+        borderColor: "var(--color-border)",
       }}
+      onMouseEnter={(e) =>
+        ((e.currentTarget as HTMLElement).style.borderColor = "var(--color-accent)")
+      }
+      onMouseLeave={(e) =>
+        ((e.currentTarget as HTMLElement).style.borderColor = "var(--color-border)")
+      }
     >
-      <div
-        className="mb-3 text-2xl"
-        style={{
-          color: "var(--color-accent)",
-        }}
-      >
+      <div className="mb-3" style={{ color: "var(--color-accent)" }}>
         {icon}
       </div>
-
-      <h3
-        className="mb-2 text-lg font-bold"
-        style={{
-          color: "var(--color-text-primary)",
-        }}
-      >
+      <h3 className="mb-2 text-lg font-bold" style={{ color: "var(--color-text-primary)" }}>
         {title}
       </h3>
-
-      <p
-        className="text-sm leading-6"
-        style={{
-          color: "var(--color-text-secondary)",
-        }}
-      >
+      <p className="text-sm leading-6" style={{ color: "var(--color-text-secondary)" }}>
         {description}
       </p>
     </article>

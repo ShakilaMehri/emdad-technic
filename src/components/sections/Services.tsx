@@ -1,32 +1,24 @@
 import ServiceCard from "@/components/cards/ServiceCard";
-import { services } from "@/data/Services";
+import { services } from "@/data/ServicesData";
 
 export default function Services() {
   return (
-    <section className="py-16">
+    <section className="py-12">
       <div className="container mx-auto px-5">
         <div className="mb-10 text-center">
           <h2
             className="mb-4 text-3xl font-bold"
-            style={{
-              color: "var(--color-text-primary)",
-            }}
+            style={{ color: "var(--color-text-primary)" }}
           >
-            خدمات امداد خودرو تکنیک
+            خدمات امداد خودرو تکنیک بندرعباس
           </h2>
-
-          <p
-            className="mx-auto max-w-md"
-            style={{
-              color: "var(--color-text-secondary)",
-            }}
-          >
-            خدمات تخصصی امداد خودرو و خودروبر در بندرعباس با اعزام سریع و
+          <p className="mx-auto max-w-md" style={{ color: "var(--color-text-secondary)" }}>
+            خدمات تخصصی امداد خودرو، خودروبر و مکانیک سیار در بندرعباس با اعزام سریع و
             پشتیبانی ۲۴ ساعته.
           </p>
         </div>
 
-        <div className="flex flex-col gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
             <ServiceCard
               key={service.title}

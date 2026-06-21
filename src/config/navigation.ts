@@ -1,22 +1,9 @@
 export const navigation = [
-  {
-    title: "خانه",
-    href: "/",
-  },
-  {
-    title: "خدمات",
-    href: "/services",
-  },
-  {
-    title: "درباره ما",
-    href: "/about",
-  },
-  {
-    title: "تماس با ما",
-    href: "/contact",
-  },
-  {
-    title: "بلاگ",
-    href: "/blog",
-  },
+  { title: 'صفحه اصلی', href: '/' },
+  { title: 'خدمات ما', href: '#services' },
+  { title: 'چرا ما', href: '#why-us' },
+  { title: 'پوشش جغرافیایی', href: '#coverage' },
+  { title: 'نظرات مشتریان', href: '#testimonials' },
+  { title: 'سوالات متداول', href: '#faqs' },
+  { title: 'تماس با ما', href: '#contact' },
 ];

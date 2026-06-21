@@ -1,49 +1,66 @@
-import Link from "next/link";
-import { navigation } from "@/config/navigation";
+'use client';
 
-type MobileDrawerProps = {
+import Link from 'next/link';
+import { useEffect } from 'react';
+import { X, Phone } from 'lucide-react';
+import { navigation } from '@/config/navigation';
+
+interface MobileDrawerProps {
   isOpen: boolean;
   onClose: () => void;
-};
+}
 
 export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) onClose();
+    };
+    if (isOpen) {
+      document.addEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = '';
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   return (
     <>
-      {/* Backdrop */}
-      <div
-        className="fixed inset-0 z-40 transition-opacity"
-        style={{
-          backgroundColor: "rgba(0, 0, 0, 0.5)",
-        }}
-        onClick={onClose}
-      />
-
-      {/* Drawer */}
-      <div
-        className="fixed inset-y-0 right-0 z-50 w-full max-w-sm overflow-y-auto"
-        style={{
-          backgroundColor: "var(--color-background)",
-        }}
+      <div className="fixed inset-0 bg-black/60 z-50" onClick={onClose} aria-hidden="true" />
+      <aside
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="drawer-title"
+        className="fixed top-0 right-0 h-full w-80 max-w-[85vw] z-50 shadow-2xl"
+        style={{ backgroundColor: 'var(--color-background)' }}
       >
-        <div className="p-5">
-          {/* Close Button */}
-          <button type="button" onClick={onClose}>
-            ✕
-          </button>
+        <div className="flex flex-col h-full">
+          <div className="flex items-center justify-between p-4 border-b" style={{ borderColor: 'var(--color-border)' }}>
+            <h2 id="drawer-title" className="text-lg font-bold" style={{ color: 'var(--color-text-primary)' }}>
+              منو
+            </h2>
+            <button
+              onClick={onClose}
+              aria-label="بستن منو"
+              className="p-2 rounded-lg hover:bg-white/10"
+              style={{ color: 'var(--color-text-primary)' }}
+            >
+              <X size={24} />
+            </button>
+          </div>
 
-          {/* Navigation Links */}
-          <nav>
-            <ul className="flex flex-col gap-6">
+          <nav className="flex-1 overflow-y-auto p-4">
+            <ul className="space-y-2">
               {navigation.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-lg font-medium"
-                    style={{
-                      color: "var(--color-text-primary)",
-                    }}
+                    onClick={onClose}
+                    className="block px-4 py-3 rounded-lg hover:bg-white/10"
+                    style={{ color: 'var(--color-text-primary)' }}
                   >
                     {item.title}
                   </Link>
@@ -52,26 +69,18 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
             </ul>
           </nav>
 
-          {/* Divider */}
-          <div
-            className="my-8 border-t"
-            style={{
-              borderColor: "var(--color-border)",
-            }}
-          />
-
-          {/* Emergency Call */}
-          <button
-            className="w-full rounded-xl py-3 font-bold"
-            style={{
-              backgroundColor: "var(--color-accent)",
-              color: "var(--color-background)",
-            }}
-          >
-            📞 تماس فوری
-          </button>
+          <div className="p-4 border-t" style={{ borderColor: 'var(--color-border)' }}>
+            <a
+              href="tel:09017301443"
+              className="flex items-center justify-center gap-2 w-full px-6 py-3 rounded-lg font-bold active:scale-95"
+              style={{ backgroundColor: 'var(--color-accent)', color: 'var(--color-primary)' }}
+            >
+              <Phone size={20} />
+              تماس فوری: ۰۹۰۱۷۳۰۱۴۴۳
+            </a>
+          </div>
         </div>
-      </div>
+      </aside>
     </>
   );
 }

@@ -2,19 +2,27 @@ import Container from "@/components/ui/Container";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import Image from "next/image";
+import { Clock, MapPin, Zap, Phone, MessageCircle, CheckCircle } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="pt-6 pb-10">
+    <section className="pt-8 pb-12">
       <Container>
-        {/* Status Badge */}
-        <div className="mb-6">
-          <Badge>🟢 ۲۴ ساعته آماده خدمت</Badge>
+        {/* Status Badges */}
+        <div className="mb-5 flex flex-wrap items-center gap-2">
+          <Badge>
+            <CheckCircle size={16} className="text-green-500" />
+            ۲۴ ساعته آماده خدمت
+          </Badge>
+          <Badge>
+            <Zap size={16} className="text-yellow-500" />
+            اعزام فوری
+          </Badge>
         </div>
 
         {/* Heading */}
         <h1
-          className="mb-4 text-4xl font-bold leading[1.2]"
+          className="mb-5 text-[42px] font-extrabold leading-[1.15] tracking-tight"
           style={{
             color: "var(--color-text-primary)",
           }}
@@ -26,7 +34,7 @@ export default function Hero() {
 
         {/* Description */}
         <div
-          className="mb-6 space-y-2 text-base leading-7"
+          className="mb-7 space-y-2 text-base leading-7"
           style={{
             color: "var(--color-text-secondary)",
           }}
@@ -39,37 +47,55 @@ export default function Hero() {
         </div>
 
         {/* Feature Badges */}
-        <div className="mb-8 flex flex-wrap items-center gap-6">
-          <Badge variant="small">🕐 ۲۴ ساعته</Badge>
+        <div className="mb-7 flex flex-wrap items-center gap-3">
+          <Badge variant="small">
+            <Clock size={14} />
+            ۲۴ ساعته
+          </Badge>
 
-          <Badge variant="small">📍 تمام بندرعباس</Badge>
+          <Badge variant="small">
+            <MapPin size={14} />
+            تمام بندرعباس
+          </Badge>
 
-          <Badge variant="small">🚚 اعزام سریع</Badge>
+          <Badge variant="small">
+            <Zap size={14} />
+            اعزام سریع
+          </Badge>
         </div>
 
         {/* Emergency Call */}
         <div className="mb-4">
           <Button variant="primary" fullWidth>
             <span className="flex w-full items-center justify-between">
-              <span>۰۹۱۷۱۲۳۴۵۶۷</span>
+              <span>۰۹۰۱۷۳۰۱۴۴۳</span>
 
-              <span>تماس فوری 📞</span>
+              <span className="flex items-center gap-2">
+                تماس فوری
+                <Phone size={20} />
+              </span>
             </span>
           </Button>
         </div>
 
-<Button variant="secondary" fullWidth>
-  <div className="flex w-full items-center justify-center gap-2">
-    💬
-    ارتباط از طریق واتساپ
-  </div>
-</Button>
+        <a
+          href="https://wa.me/989017301443"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button variant="secondary" fullWidth>
+            <div className="flex w-full items-center justify-center gap-2">
+              <MessageCircle size={20} />
+              ارتباط از طریق واتساپ
+            </div>
+          </Button>
+        </a>
 
         {/* Hero Image */}
-        <div className="relative mt-8 aspect-[3/2] overflow-hidden rounded-3xl">
+        <div className="relative mt-8 aspect-[3/2] overflow-hidden rounded-3xl shadow-lg">
           <Image
             src="/images/hero-car.webp"
-            alt="امداد خودرو و خودروبر تکنیک بندرعباس"
+            alt="امداد خودرو و خودروبر تکنیک بندرعباس - سرویس ۲۴ ساعته امداد خودرو، یدک‌کش و مکانیک سیار در تمام مناطق بندرعباس"
             fill
             className="object-cover object-[center_80%]"
             priority
