@@ -1,25 +1,31 @@
+import Container from "@/components/ui/Container";
 import FAQAccordion from "@/components/ui/FAQAccordion";
 import { faqs } from "@/data/faqsData";
 
 export default function FAQs() {
   return (
-    <section className="py-6">
-      <div className="container mx-auto px-5">
-        <div className="mb-10 text-center">
-          <h2 className="mb-4 text-3xl font-bold" style={{ color: "var(--color-text-primary)" }}>
-            سوالات متداول امداد خودرو بندرعباس
+    <section className="py-20 bg-background-secondary">
+      <Container>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">
+            سوالات متداول
           </h2>
-          <p className="mx-auto max-w-md" style={{ color: "var(--color-text-secondary)" }}>
-            پاسخ به سوالات رایج درباره خدمات امداد خودرو ۲۴ ساعته، یدک‌کش و مکانیک سیار تکنیک در بندرعباس.
+          <p className="text-text-secondary max-w-2xl mx-auto">
+            پاسخ سوالات رایج درباره خدمات امداد خودرو
           </p>
         </div>
 
-        <div className="flex flex-col gap-4">
-          {faqs.map((faq, index) => (
-            <FAQAccordion key={index} question={faq.question} answer={faq.answer} />
+        <div className="max-w-3xl mx-auto space-y-4">
+          {faqs.map((faq) => (
+            <FAQAccordion
+              key={faq.id}
+              id={faq.id}
+              question={faq.question}
+              answer={faq.answer}
+            />
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

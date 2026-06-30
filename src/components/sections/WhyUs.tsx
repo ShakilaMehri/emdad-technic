@@ -1,25 +1,32 @@
-import TrustCard from "@/components/cards/TrustCard";
 import { whyUsItems } from "@/data/WhyUsData";
+import Container from "@/components/ui/Container";
 
 export default function WhyUs() {
   return (
-    <section className="py-8">
-      <div className="container mx-auto px-5">
-        <div className="mb-10 text-center">
-          <h2 className="mb-4 text-3xl font-bold" style={{ color: "var(--color-text-primary)" }}>
-            چرا امداد خودرو تکنیک؟
+    <section className="py-16 bg-[var(--color-background)]">
+      <Container>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[var(--color-text-primary)]">
+            چرا امداد تکنیک؟
           </h2>
-          <p className="mx-auto max-w-md" style={{ color: "var(--color-text-secondary)" }}>
-            ترکیب سرعت، تخصص و پشتیبانی ۲۴ ساعته برای ارائه بهترین خدمات امداد خودرو در بندرعباس.
+          <p className="text-lg text-[var(--color-text-secondary)]">
+            تیم متخصص و با تجربه ما آماده خدمت‌رسانی به شماست
           </p>
         </div>
-
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {whyUsItems.map((item) => (
-            <TrustCard key={item.title} icon={item.icon} title={item.title} description={item.description} />
+            <div key={item.id} className="text-center">
+              <div className="bg-orange-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-orange-600">
+                {item.icon}
+              </div>
+              <h3 className="font-bold text-xl mb-3 text-[var(--color-text-primary)]">
+                {item.title}
+              </h3>
+              <p className="text-[var(--color-text-secondary)]">{item.description}</p>
+            </div>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

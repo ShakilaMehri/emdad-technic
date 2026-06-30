@@ -1,14 +1,16 @@
-export const coverageAreas = [
-  "مرکز شهر",
-  "گلشهر",
-  "الهیه",
-  "سه راه برق",
-  "شهرک پیامبر اعظم",
-  "نایبند",
-  "بلوار امام حسین",
-  "بلوار جمهوری",
-  "پاسداران",
-  "پشت شهر",
-  "شهرک صنعتی",
-  "بندر شهید رجایی",
+import type { CoverageArea, Headquarters } from '@/types';
+
+export const coverageAreas: CoverageArea[] = [
+  { name: 'داماهی' },
+  { name: 'نیایش' },
+  { name: 'الهیه' },
+  { name: 'گلشهر' },
+  { name: 'شهرک نور' },
+  { name: 'بهشت بندر' },
 ];
+
+export const headquarters: Headquarters = {
+  name: 'مرکز امداد تکنیک',
+  address: 'بندرعباس، بلوار امام خمینی',
+  neighborhood: 'شمیلی ها',
+};

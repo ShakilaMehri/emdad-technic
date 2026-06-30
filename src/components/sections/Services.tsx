@@ -1,34 +1,48 @@
 import ServiceCard from "@/components/cards/ServiceCard";
+import Container from "@/components/ui/Container";
 import { services } from "@/data/ServicesData";
 
 export default function Services() {
   return (
-    <section className="py-12">
-      <div className="container mx-auto px-5">
-        <div className="mb-10 text-center">
-          <h2
-            className="mb-4 text-3xl font-bold"
-            style={{ color: "var(--color-text-primary)" }}
-          >
-            خدمات امداد خودرو تکنیک بندرعباس
+    <section
+      id="services"
+      className="py-14 bg-gradient-to-b from-[var(--color-background)] to-[var(--color-surface)]"
+    >
+      <Container>
+        <div className="text-center mb-16 space-y-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--color-text-primary)]">
+            خدمات امداد خودرو
           </h2>
-          <p className="mx-auto max-w-md" style={{ color: "var(--color-text-secondary)" }}>
-            خدمات تخصصی امداد خودرو، خودروبر و مکانیک سیار در بندرعباس با اعزام سریع و
-            پشتیبانی ۲۴ ساعته.
+          <p className="text-lg md:text-xl text-[var(--color-text-secondary)] max-w-3xl mx-auto">
+            امداد تکنیک با تیمی حرفه‌ای و مجهز، خدمات جامع امداد خودرو را در{" "}
+            <span className="font-bold text-[var(--color-accent)]">
+              سراسر بندرعباس
+            </span>{" "}
+            ارائه می‌دهد
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
-            <ServiceCard
-              key={service.title}
-              icon={service.icon}
-              title={service.title}
-              description={service.description}
-            />
-          ))}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service) => {
+            const IconComponent = service.icon;
+            return (
+              <ServiceCard
+                key={service.id}
+                title={service.title}
+                description={service.description}
+                icon={
+                  <IconComponent
+                    size={32}
+                    strokeWidth={1.5}
+                    className="text-[var(--color-accent)]"
+                  />
+                }
+                href={service.href}
+              />
+            );
+          })}
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

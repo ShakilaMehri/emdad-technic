@@ -1,0 +1,105 @@
+emdad-technic/
+├── .gitignore
+├── AGENTS.md
+├── CLAUDE.md
+├── README.md
+├── eslint.config.mjs
+├── next-env.d.ts
+├── next.config.ts
+├── package-lock.json
+├── package.json
+├── postcss.config.mjs
+├── tsconfig.json
+├── tsconfig.tsbuildinfo
+├── public/
+│   ├── icons/
+│   └── images/
+│       ├── hero-car.webp
+│       └── logo.png
+└── src/
+    ├── app/
+    │   ├── articles/
+    │   │   └── page.tsx
+    │   ├── contact/
+    │   │   └── page.tsx
+    │   ├── coverage/
+    │   │   └── page.tsx
+    │   ├── faqs/
+    │   │   └── page.tsx
+    │   ├── globals.css
+    │   ├── layout.tsx
+    │   ├── page.tsx
+    │   ├── robots.ts
+    │   ├── services/
+    │   │   ├── body-repair/
+    │   │   │   └── page.tsx
+    │   │   ├── car-electrician/
+    │   │   │   └── page.tsx
+    │   │   ├── mobile-mechanic/
+    │   │   │   └── page.tsx
+    │   │   ├── roadside-assistance/
+    │   │   │   └── page.tsx
+    │   │   ├── towing/
+    │   │   │   └── page.tsx
+    │   │   └── page.tsx
+    │   ├── sitemap.ts
+    │   ├── testimonials/
+    │   │   └── page.tsx
+    │   └── why-us/
+    │       └── page.tsx
+    ├── components/
+    │   ├── articles/
+    │   │   ├── components/
+    │   │   └── data/
+    │   ├── cards/
+    │   │   ├── ArticleCard.tsx
+    │   │   ├── ServiceCard.tsx
+    │   │   ├── StatisticCard.tsx
+    │   │   ├── TestimonialCard.tsx
+    │   │   └── TrustCard.tsx
+    │   ├── faqs/
+    │   │   ├── components/
+    │   │   └── data/
+    │   ├── features/
+    │   ├── layout/
+    │   │   ├── Footer.tsx
+    │   │   ├── Header.tsx
+    │   │   └── MobileDrawer.tsx
+    │   ├── sections/
+    │   │   ├── Coverage.tsx
+    │   │   ├── EmergencyCalls.tsx
+    │   │   ├── FAQs.tsx
+    │   │   ├── FinalCTA.tsx
+    │   │   ├── Hero.tsx
+    │   │   ├── Services.tsx
+    │   │   ├── Testimonials.tsx
+    │   │   └── WhyUs.tsx
+    │   ├── services/
+    │   │   ├── components/
+    │   │   └── data/
+    │   └── ui/
+    │       ├── Badge.tsx
+    │       ├── Button.tsx
+    │       ├── Container.tsx
+    │       └── FAQAccordion.tsx
+    ├── config/
+    │   └── navigation.ts
+    ├── data/
+    │   ├── articleData.tsx
+    │   ├── CoverageData.ts
+    │   ├── faqsData.ts
+    │   ├── ServicesData.tsx
+    │   ├── testimonialsData.ts
+    │   ├── WhyUsData.tsx
+    │   └── service-pages/
+    │       ├── body-repair.tsx
+    │       ├── car-electrician.tsx
+    │       ├── mobile-mechanic.tsx
+    │       ├── roadside-assistance.tsx
+    │       └── towingData.tsx
+    ├── lib/
+    │   ├── constants.ts
+    │   └── utils.ts
+    └── types/
+        ├── components.ts
+        └── index.ts

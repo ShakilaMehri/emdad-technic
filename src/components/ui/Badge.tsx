@@ -1,36 +1,20 @@
-import { ReactNode } from "react";
-import clsx from "clsx";
+import type { BadgeProps } from '@/types/components';
 
-type BadgeProps = {
-  children: ReactNode;
-  variant?: "default" | "small";
-  className?: string;
-};
-
-export default function Badge({
-  children,
+export default function Badge({ 
+  children, 
   variant = "default",
-  className,
+  className = ""
 }: BadgeProps) {
+  const variantStyles = {
+    default: "bg-yellow-400 text-gray-900 px-4 py-1.5 text-sm",
+    small: "bg-yellow-400 text-gray-900 px-3 py-1 text-xs",
+    primary: "bg-yellow-400 text-gray-900 px-4 py-1.5 text-sm font-semibold",
+    secondary: "bg-gray-100 text-gray-700 px-4 py-1.5 text-sm"
+  };
+
   return (
-    <span
-      className={clsx(
-        "inline-flex items-center rounded-full border font-medium",
-        {
-          "px-4 py-2 text-sm": variant === "default",
-          "px-3 py-1.5 text-xs": variant === "small",
-        },
-        className,
-      )}
-      style={{
-        backgroundColor: "var(--color-surface)",
-        borderColor: "var(--color-border)",
-        color: "var(--color-text-primary)",
-      }}
-    >
+    <span className={`inline-flex items-center gap-1.2 whitespace-nowrap rounded-full font-medium ${variantStyles[variant]} ${className}`}>
       {children}
     </span>
-    
-    
   );
 }

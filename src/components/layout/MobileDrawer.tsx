@@ -1,9 +1,8 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { useEffect } from 'react';
-import { X, Phone } from 'lucide-react';
-import { navigation } from '@/config/navigation';
+import Link from "next/link";
+import { X, Phone } from "lucide-react";
+import { navigation } from "@/config/navigation";
 
 interface MobileDrawerProps {
   isOpen: boolean;
@@ -11,76 +10,76 @@ interface MobileDrawerProps {
 }
 
 export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isOpen) onClose();
-    };
-    if (isOpen) {
-      document.addEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'hidden';
-    }
-    return () => {
-      document.removeEventListener('keydown', handleEscape);
-      document.body.style.overflow = '';
-    };
-  }, [isOpen, onClose]);
-
   if (!isOpen) return null;
 
   return (
     <>
-      <div className="fixed inset-0 bg-black/60 z-50" onClick={onClose} aria-hidden="true" />
-      <aside
+      {/* Backdrop */}
+      <div
+        className="fixed inset-0 z-40 transition-opacity"
+        style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+        onClick={onClose}
+        aria-hidden="true"
+      />
+
+      {/* Drawer panel */}
+      <div
+        className="fixed inset-y-0 right-0 z-50 w-72 overflow-y-auto"
+        style={{ backgroundColor: "var(--color-background)" }}
         role="dialog"
         aria-modal="true"
-        aria-labelledby="drawer-title"
-        className="fixed top-0 right-0 h-full w-80 max-w-[85vw] z-50 shadow-2xl"
-        style={{ backgroundColor: 'var(--color-background)' }}
+        aria-label="منوی ناوبری"
       >
-        <div className="flex flex-col h-full">
-          <div className="flex items-center justify-between p-4 border-b" style={{ borderColor: 'var(--color-border)' }}>
-            <h2 id="drawer-title" className="text-lg font-bold" style={{ color: 'var(--color-text-primary)' }}>
-              منو
-            </h2>
-            <button
-              onClick={onClose}
-              aria-label="بستن منو"
-              className="p-2 rounded-lg hover:bg-white/10"
-              style={{ color: 'var(--color-text-primary)' }}
-            >
-              <X size={24} />
-            </button>
-          </div>
-
-          <nav className="flex-1 overflow-y-auto p-4">
-            <ul className="space-y-2">
-              {navigation.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    onClick={onClose}
-                    className="block px-4 py-3 rounded-lg hover:bg-white/10"
-                    style={{ color: 'var(--color-text-primary)' }}
-                  >
-                    {item.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <div className="p-4 border-t" style={{ borderColor: 'var(--color-border)' }}>
-            <a
-              href="tel:09017301443"
-              className="flex items-center justify-center gap-2 w-full px-6 py-3 rounded-lg font-bold active:scale-95"
-              style={{ backgroundColor: 'var(--color-accent)', color: 'var(--color-primary)' }}
-            >
-              <Phone size={20} />
-              تماس فوری: ۰۹۰۱۷۳۰۱۴۴۳
-            </a>
-          </div>
+        {/* Header row */}
+        <div className="flex items-center justify-between px-4 py-4">
+          <span
+            className="text-base font-bold"
+            style={{ color: "var(--color-text-primary)" }}
+          >
+            منو
+          </span>
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="بستن منو"
+            className="flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:bg-black/10 focus-visible:outline-none"
+            style={{ color: "var(--color-text-primary)" }}
+          >
+            <X size={20} />
+          </button>
         </div>
-      </aside>
+
+        {/* Nav links */}
+        <nav className="flex flex-col gap-1 px-4 pb-4">
+          {navigation.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={onClose}
+              className="rounded-lg px-3 py-2 text-lg font-medium transition-colors hover:bg-black/10 focus-visible:outline-none"
+              style={{ color: "var(--color-text-primary)" }}
+            >
+              {item.title}
+            </Link>
+          ))}
+        </nav>
+
+        {/* CTA */}
+        <div className="px-4 pb-6">
+          <a
+            href="tel:09017301443"
+            onClick={onClose}
+            className="flex w-full items-center justify-center gap-2 rounded-xl py-3 font-bold transition-opacity hover:opacity-90 focus-visible:outline-none"
+            style={{
+              backgroundColor: "var(--color-accent)",
+              color: "var(--color-background)",
+            }}
+          >
+            <Phone size={18} />
+            <span dir="ltr">۰۹۰۱۷۳۰۱۴۴۳</span>
+          </a>
+        </div>
+      </div>
     </>
   );
 }

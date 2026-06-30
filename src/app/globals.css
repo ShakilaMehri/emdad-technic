@@ -1,19 +1,18 @@
 @import "tailwindcss";
 
-
 :root {
   /* Brand Colors */
-  --color-primary: #0F172A;
-  --color-primary-light: #1E293B;
-  --color-accent: #F59E0B;
+  --color-primary: #0f172a;
+  --color-primary-light: #1e293b;
+  --color-accent: #f59e0b;
 
   /* Text Colors */
-  --color-text-primary: #FFFFFF;
-  --color-text-secondary: #CBD5E1;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #cbd5e1;
 
   /* Backgrounds */
-  --color-background: #0F172A;
-  --color-surface: #1E293B;
+  --color-background: #0f172a;
+  --color-surface: #1e293b;
   --color-footer: #0a0f1d;
 
   /* Border */
@@ -48,9 +47,7 @@
   --font-size-2xl: 2rem;
 }
 
-/* ===============================
-   Global Styles
-================================ */
+/* Global Styles */
 
 html,
 body {
@@ -81,7 +78,7 @@ textarea {
   font-family: inherit;
 }
 
- /* Layout Utilities */
+/* Layout Utilities */
 .container {
   width: 100%;
   max-width: var(--container-width);
@@ -118,7 +115,6 @@ p {
   line-height: 1.8;
 }
 
-
 /* Responsive Breakpoints */
 @media (min-width: 768px) {
   :root {
@@ -141,6 +137,46 @@ p {
 
 /* Global Utility Classes */
 
+.text-primary {
+  color: var(--color-text-primary);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+.bg-background {
+  background-color: var(--color-background);
+}
+
+.bg-surface {
+  background-color: var(--color-surface);
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.bg-primary-light {
+  background-color: var(--color-primary-light);
+}
+
+.bg-accent {
+  background-color: var(--color-accent);
+}
+
+.bg-accent-soft {
+  background-color: rgba(245, 158, 11, 0.15);
+}
+
+.border-default {
+  border-color: var(--color-border);
+}
+
 /* Section spacing */
 .section {
   padding-block: 4rem;
@@ -152,12 +188,10 @@ p {
   }
 }
 
-
 /* Text alignment */
 .text-center {
   text-align: center;
 }
-
 
 /* Flex Utilities */
 .flex {
@@ -170,13 +204,11 @@ p {
   justify-content: center;
 }
 
-
 /* Grid Utility */
 .grid {
   display: grid;
   gap: var(--space-lg);
 }
-
 
 /* Interactive Elements */
 button {
@@ -185,13 +217,18 @@ button {
   background: none;
 }
 
+*:focus {
+  outline: none;
+}
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
 
 /* Smooth Transitions */
 .transition {
-  transition:
-    all 0.3s ease;
+  transition: all 0.3s ease;
 }
-
 
 /* Image Handling */
 img {
@@ -200,9 +237,76 @@ img {
   display: block;
 }
 
-
 /* Selection Color */
 ::selection {
   background-color: var(--color-accent);
   color: var(--color-primary);
+}
+
+/* FAQ Accordion Styles */
+.faq-item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.1);
+}
+
+.faq-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem;
+  text-align: right;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.faq-button:hover {
+  background: rgba(255, 107, 53, 0.05);
+}
+
+.faq-button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
+}
+
+.faq-question {
+  flex: 1;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  line-height: 1.5;
+}
+
+.faq-icon {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 107, 53, 0.1);
+  color: var(--color-accent);
+  transition: transform 0.3s ease;
+}
+
+.faq-icon-open {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  margin-top: 1rem;
+  border-top: 1px solid var(--color-border);
 }

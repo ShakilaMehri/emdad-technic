@@ -29,7 +29,8 @@ export default function Testimonials() {
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((testimonial) => (
             <TestimonialCard
-              key={testimonial.name}
+              key={testimonial.id}
+              id={testimonial.id}
               name={testimonial.name}
               review={testimonial.review}
             />

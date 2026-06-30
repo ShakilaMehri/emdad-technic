@@ -1,34 +1,68 @@
-type FAQAccordionProps = {
+"use client";
+
+import { useState } from "react";
+
+interface FAQAccordionProps {
+  id?: string;
   question: string;
   answer: string;
-};
+}
 
-export default function FAQAccordion({ question, answer }: FAQAccordionProps) {
+export default function FAQAccordion({
+  id,
+  question,
+  answer,
+}: FAQAccordionProps) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const fallbackId = (question || "faq")
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "") || "faq";
+  const itemId = id || fallbackId;
+  const contentId = `faq-content-${itemId}`;
+  const buttonId = `faq-button-${itemId}`;
+
   return (
-    <details
-      className="group overflow-hidden rounded-[20px] border"
-      style={{
-        backgroundColor: "var(--color-surface)",
-        borderColor: "var(--color-border)",
-      }}
-    >
-      <summary className="flex cursor-pointer list-none items-center justify-between p-5 text-right">
-        <span className="font-semibold" style={{ color: "var(--color-text-primary)" }}>
-          {question}
-        </span>
-        <span
-          className="text-xl transition-transform duration-200 group-open:rotate-45"
-          style={{ color: "var(--color-accent)" }}
-        >
-          +
-        </span>
-      </summary>
+    <div className="faq-item">
+      <button
+        id={buttonId}
+        className="faq-button"
+        onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
+        aria-controls={contentId}
+      >
+        <span className="faq-question">{question}</span>
+        
+        <div className={`faq-icon ${isOpen ? "faq-icon-open" : ""}`}>
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 4v16m8-8H4"
+            />
+          </svg>
+        </div>
+      </button>
 
-      <div className="px-5 pb-5">
-        <p className="text-sm leading-7" style={{ color: "var(--color-text-secondary)" }}>
-          {answer}
-        </p>
-      </div>
-    </details>
+      {isOpen && (
+        <div
+          id={contentId}
+          className="faq-answer"
+          role="region"
+          aria-labelledby={buttonId}
+        >
+          <p className="text-text-secondary leading-relaxed">{answer}</p>
+        </div>
+      )}
+    </div>
   );
 }

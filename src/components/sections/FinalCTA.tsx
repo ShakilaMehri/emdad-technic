@@ -1,48 +1,40 @@
 import { Phone, MessageCircle } from "lucide-react";
 import Button from "@/components/ui/Button";
+import { SITE_CONFIG } from "@/lib/constants";
 
 export default function FinalCTA() {
   return (
-    <section className="py-12">
-      <div className="container mx-auto px-5">
-        <div
-          className="rounded-[24px] border p-8 text-center"
-          style={{
-            backgroundColor: "var(--color-surface)",
-            borderColor: "var(--color-border)",
-          }}
-        >
-          <h2
-            className="mb-4 text-3xl font-bold"
-            style={{ color: "var(--color-text-primary)" }}
-          >
+    <section className="py-20 bg-surface border-y border-border">
+      <div className="max-w-4xl mx-auto text-center space-y-8 px-6">
+        <div className="space-y-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary">
             نیاز به امداد فوری دارید؟
           </h2>
-
-          <p
-            className="mb-8"
-            style={{ color: "var(--color-text-secondary)" }}
-          >
-            تیم امداد خودرو تکنیک بندرعباس به صورت ۲۴ ساعته آماده خدمت‌رسانی است.
+          <p className="text-lg text-secondary">
+            تیم امداد خودرو تکنیک بندرعباس به صورت ۲۴ ساعته آماده خمت‌رسانی است.
           </p>
+        </div>
 
-          <div className="flex flex-col gap-3">
-            <Button href="tel:09017301443" fullWidth>
-              <Phone size={18} className="ml-2" />
-              تماس فوری
-            </Button>
+        <div className="flex flex-col items-center gap-4 w-full max-w-xs mx-auto">
+          <Button
+            variant="primary"
+            href={`tel:${SITE_CONFIG.phone}`}
+            fullWidth
+          >
+            <Phone size={20} className="flex-shrink-0" />
+            تماس فوری
+          </Button>
 
-            <Button
-              href="https://wa.me/989017301443"
-              variant="secondary"
-              fullWidth
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <MessageCircle size={18} className="ml-2" />
-              ارتباط از طریق واتساپ
-            </Button>
-          </div>
+          <Button
+            variant="secondary"
+            href={SITE_CONFIG.social.whatsapp}
+            target="_blank"
+            rel="nopener noreferrer"
+            fullWidth
+          >
+            <MessageCircle size={20} className="flex-shrink-0" />
+            ارتباط از طریق واتساپ
+          </Button>
         </div>
       </div>
     </section>

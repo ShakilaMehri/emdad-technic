@@ -1,11 +1,5 @@
-import clsx from "clsx";
-
-type StatisticCardProps = {
-  value: string;
-  title: string;
-  description?: string;
-  className?: string;
-};
+import type { StatisticCardProps } from '@/types';
+import { cn } from '@/lib/utils';
 
 export default function StatisticCard({
   value,
@@ -14,45 +8,18 @@ export default function StatisticCard({
   className,
 }: StatisticCardProps) {
   return (
-    <article
-      className={clsx(
-        "rounded-[20px] border p-6 text-center",
-        "transition-all duration-300 hover:-translate-y-1",
+    <div
+      className={cn(
+        'rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]',
+        'p-6 flex flex-col items-center text-center gap-2',
         className
       )}
-      style={{
-        backgroundColor: "var(--color-surface)",
-        borderColor: "var(--color-border)",
-      }}
     >
-      <div
-        className="mb-3 text-4xl font-bold"
-        style={{
-          color: "var(--color-accent)",
-        }}
-      >
-        {value}
-      </div>
-
-      <h3
-        className="mb-2 text-lg font-semibold"
-        style={{
-          color: "var(--color-text-primary)",
-        }}
-      >
-        {title}
-      </h3>
-
+      <span className="text-4xl font-black text-[var(--color-accent)]">{value}</span>
+      <span className="text-[var(--color-text-primary)] font-bold">{title}</span>
       {description && (
-        <p
-          className="text-sm leading-6"
-          style={{
-            color: "var(--color-text-secondary)",
-          }}
-        >
-          {description}
-        </p>
+        <span className="text-[var(--color-text-secondary)] text-sm">{description}</span>
       )}
-    </article>
+    </div>
   );
 }
